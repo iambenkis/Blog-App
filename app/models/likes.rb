@@ -1,2 +1,0 @@
-class Likes < ApplicationRecord
-end
