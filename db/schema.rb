@@ -25,8 +25,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_153457) do
   create_table "likes", force: :cascade do |t|
     t.bigint "author_id"
     t.bigint "post_id"
-    t.datetime "create_at"
-    t.datetime "update_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,8 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_153457) do
     t.string "name"
     t.string "photo"
     t.string "bio"
-    t.datetime "create_at"
-    t.datetime "update_at"
     t.integer "posts_counter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
