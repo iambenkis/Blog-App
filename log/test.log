@@ -4148,3 +4148,196 @@ FOREIGN KEY ("author_id")
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
   [1m[36mPost Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2) subquery_for_count[0m  [["author_id", 14], ["LIMIT", 3]]
   [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Bringht"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:19.757521"], ["updated_at", "2022-12-03 14:58:19.757521"]]
+  [1m[36mTRANSACTION (38.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lilly"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Poland."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:19.799645"], ["updated_at", "2022-12-03 14:58:19.799645"]]
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Peter"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Poland."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:19.810834"], ["updated_at", "2022-12-03 14:58:19.810834"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello"], ["text", "This is my first post"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-03 14:58:19.881347"], ["updated_at", "2022-12-03 14:58:19.881347"], ["author_id", 15]]
+  [1m[36mPost Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 15]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 1], ["updated_at", "2022-12-03 14:58:19.891913"], ["id", 15]]
+  [1m[36mTRANSACTION (26.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:19.951158"], ["updated_at", "2022-12-03 14:58:19.951158"]]
+  [1m[36mTRANSACTION (35.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lilly"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Poland."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:19.989139"], ["updated_at", "2022-12-03 14:58:19.989139"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (1.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello"], ["text", "This is my first post"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-03 14:58:20.000658"], ["updated_at", "2022-12-03 14:58:20.000658"], ["author_id", 18]]
+  [1m[36mPost Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 18]]
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 1], ["updated_at", "2022-12-03 14:58:20.010713"], ["id", 18]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:20.042011"], ["updated_at", "2022-12-03 14:58:20.042011"]]
+  [1m[36mTRANSACTION (28.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lilly"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Poland."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:20.077086"], ["updated_at", "2022-12-03 14:58:20.077086"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (1.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello"], ["text", "This is my first post"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-03 14:58:20.088863"], ["updated_at", "2022-12-03 14:58:20.088863"], ["author_id", 20]]
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 1], ["updated_at", "2022-12-03 14:58:20.096323"], ["id", 20]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (1.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello-second"], ["text", "This is my second post"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-03 14:58:20.110610"], ["updated_at", "2022-12-03 14:58:20.110610"], ["author_id", 20]]
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 2], ["updated_at", "2022-12-03 14:58:20.115144"], ["id", 20]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (1.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello-third"], ["text", "This is my third post"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-03 14:58:20.122776"], ["updated_at", "2022-12-03 14:58:20.122776"], ["author_id", 20]]
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 3], ["updated_at", "2022-12-03 14:58:20.131397"], ["id", 20]]
+  [1m[36mTRANSACTION (9.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (1.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello-fourth"], ["text", "This is my fourth post"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-03 14:58:20.145028"], ["updated_at", "2022-12-03 14:58:20.145028"], ["author_id", 20]]
+  [1m[36mPost Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 4], ["updated_at", "2022-12-03 14:58:20.153589"], ["id", 20]]
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Create (2.1ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Hi Tom!"], ["created_at", "2022-12-03 14:58:20.238154"], ["updated_at", "2022-12-03 14:58:20.238154"], ["author_id", 21], ["post_id", 16]]
+  [1m[36mComment Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 16]]
+  [1m[36mPost Update (1.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["comments_counter", 1], ["updated_at", "2022-12-03 14:58:20.251584"], ["id", 16]]
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Create (1.4ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Hi Tom comment 2!"], ["created_at", "2022-12-03 14:58:20.267416"], ["updated_at", "2022-12-03 14:58:20.267416"], ["author_id", 21], ["post_id", 16]]
+  [1m[36mComment Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 16]]
+  [1m[36mPost Update (1.2ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["comments_counter", 2], ["updated_at", "2022-12-03 14:58:20.277640"], ["id", 16]]
+  [1m[36mPost Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Create (1.5ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Hi Tom! comment 3"], ["created_at", "2022-12-03 14:58:20.301918"], ["updated_at", "2022-12-03 14:58:20.301918"], ["author_id", 21], ["post_id", 16]]
+  [1m[36mComment Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 16]]
+  [1m[36mPost Update (1.0ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["comments_counter", 3], ["updated_at", "2022-12-03 14:58:20.311013"], ["id", 16]]
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Create (1.5ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Hi Tom! comment 4"], ["created_at", "2022-12-03 14:58:20.321371"], ["updated_at", "2022-12-03 14:58:20.321371"], ["author_id", 21], ["post_id", 16]]
+  [1m[36mComment Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 16]]
+  [1m[36mPost Update (1.0ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["comments_counter", 4], ["updated_at", "2022-12-03 14:58:20.329662"], ["id", 16]]
+  [1m[36mPost Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Create (1.4ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Hi Tom! comment 5"], ["created_at", "2022-12-03 14:58:20.344692"], ["updated_at", "2022-12-03 14:58:20.344692"], ["author_id", 21], ["post_id", 16]]
+  [1m[36mComment Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 16]]
+  [1m[36mPost Update (0.9ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["comments_counter", 5], ["updated_at", "2022-12-03 14:58:20.353554"], ["id", 16]]
+  [1m[36mPost Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Create (1.3ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Hi Tom! comment 6"], ["created_at", "2022-12-03 14:58:20.366982"], ["updated_at", "2022-12-03 14:58:20.366982"], ["author_id", 21], ["post_id", 16]]
+  [1m[36mComment Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 16]]
+  [1m[36mPost Update (0.9ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["comments_counter", 6], ["updated_at", "2022-12-03 14:58:20.376336"], ["id", 16]]
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Create (1.0ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Hi Tom! comment 6"], ["created_at", "2022-12-03 14:58:20.389460"], ["updated_at", "2022-12-03 14:58:20.389460"], ["author_id", 21], ["post_id", 15]]
+  [1m[36mComment Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 15]]
+  [1m[36mPost Update (0.9ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["comments_counter", 1], ["updated_at", "2022-12-03 14:58:20.397715"], ["id", 15]]
+  [1m[36mPost Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 20]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (1.0ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Hi Tom!"], ["created_at", "2022-12-03 14:58:20.511357"], ["updated_at", "2022-12-03 14:58:20.511357"], ["author_id", 16], ["post_id", 11]]
+  [1m[36mComment Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  [1m[36mPost Update (0.5ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["comments_counter", 1], ["updated_at", "2022-12-03 14:58:20.517298"], ["id", 11]]
+  [1m[36mPost Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 15]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Hi Tom comment"], ["created_at", "2022-12-03 14:58:20.524403"], ["updated_at", "2022-12-03 14:58:20.524403"], ["author_id", 17], ["post_id", 11]]
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  [1m[36mPost Update (0.5ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["comments_counter", 2], ["updated_at", "2022-12-03 14:58:20.528515"], ["id", 11]]
+  [1m[36mPost Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 15]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mLike Create (1.2ms)[0m  [1m[32mINSERT INTO "likes" ("created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-12-03 14:58:20.548968"], ["updated_at", "2022-12-03 14:58:20.548968"], ["author_id", 19], ["post_id", 12]]
+  [1m[36mPost Update (0.6ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["likes_counter", 1], ["updated_at", "2022-12-03 14:58:20.552680"], ["id", 12]]
+  [1m[36mPost Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 18]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2) subquery_for_count[0m  [["post_id", 16], ["LIMIT", 5]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2) subquery_for_count[0m  [["post_id", 15], ["LIMIT", 5]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:20.584770"], ["updated_at", "2022-12-03 14:58:20.584770"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:20.590350"], ["updated_at", "2022-12-03 14:58:20.590350"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:20.598276"], ["updated_at", "2022-12-03 14:58:20.598276"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:20.603532"], ["updated_at", "2022-12-03 14:58:20.603532"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:20.608323"], ["updated_at", "2022-12-03 14:58:20.608323"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:20.634464"], ["updated_at", "2022-12-03 14:58:20.634464"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2) subquery_for_count[0m  [["author_id", 27], ["LIMIT", 3]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-12-03 14:58:20.672405"], ["updated_at", "2022-12-03 14:58:20.672405"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello"], ["text", "This is my first post"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-03 14:58:20.681789"], ["updated_at", "2022-12-03 14:58:20.681789"], ["author_id", 28]]
+  [1m[36mPost Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 28]]
+  [1m[36mUser Update (2.5ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 1], ["updated_at", "2022-12-03 14:58:20.693053"], ["id", 28]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello-second"], ["text", "This is my second post"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-03 14:58:20.702523"], ["updated_at", "2022-12-03 14:58:20.702523"], ["author_id", 28]]
+  [1m[36mPost Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 28]]
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 2], ["updated_at", "2022-12-03 14:58:20.706589"], ["id", 28]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello-third"], ["text", "This is my third post"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-03 14:58:20.711158"], ["updated_at", "2022-12-03 14:58:20.711158"], ["author_id", 28]]
+  [1m[36mPost Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 28]]
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 3], ["updated_at", "2022-12-03 14:58:20.717133"], ["id", 28]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello-fourth"], ["text", "This is my fourth post"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-03 14:58:20.722595"], ["updated_at", "2022-12-03 14:58:20.722595"], ["author_id", 28]]
+  [1m[36mPost Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 28]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 4], ["updated_at", "2022-12-03 14:58:20.761932"], ["id", 28]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT 1 AS one FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2) subquery_for_count[0m  [["author_id", 28], ["LIMIT", 3]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
