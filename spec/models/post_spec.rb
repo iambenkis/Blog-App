@@ -23,37 +23,37 @@ RSpec.describe Post, type: :model do
       expect(second_post).to_not be_valid
     end
 
-    # it 'CommentsCounter must be an integer greater than or equal to zero' do
-    #   count = first_post.comments_counter
-    #   expect(count).to eq 0
-    # end
+    it 'CommentsCounter must be an integer greater than or equal to zero' do
+      count = first_post.comments_counter
+      expect(count).to eq 0
+    end
 
-    # it 'LikesCounter must be an integer greater than or equal to zero' do
-    #   counter = second_post.likes_counter
-    #   expect(counter).to eq 0
-    # end
+    it 'LikesCounter must be an integer greater than or equal to zero' do
+      counter = second_post.likes_counter
+      expect(counter).to eq 0
+    end
   end
 
-#   context 'Test methods of Post:' do
-#     Comment.create(post: last_post, author: second_user, text: 'Hi Tom!')
-#     Comment.create(post: last_post, author: second_user, text: 'Hi Tom comment 2!')
-#     Comment.create(post: last_post, author: second_user, text: 'Hi Tom! comment 3')
-#     Comment.create(post: last_post, author: second_user, text: 'Hi Tom! comment 4')
-#     Comment.create(post: last_post, author: second_user, text: 'Hi Tom! comment 5')
-#     Comment.create(post: last_post, author: second_user, text: 'Hi Tom! comment 6')
-#     Comment.create(post: third_post, author: second_user, text: 'Hi Tom! comment 6')
+  context 'Test methods of Post:' do
+    Comment.create(post: last_post, author: second_user, text: 'Hi Tom!')
+    Comment.create(post: last_post, author: second_user, text: 'Hi Tom comment 2!')
+    Comment.create(post: last_post, author: second_user, text: 'Hi Tom! comment 3')
+    Comment.create(post: last_post, author: second_user, text: 'Hi Tom! comment 4')
+    Comment.create(post: last_post, author: second_user, text: 'Hi Tom! comment 5')
+    Comment.create(post: last_post, author: second_user, text: 'Hi Tom! comment 6')
+    Comment.create(post: third_post, author: second_user, text: 'Hi Tom! comment 6')
 
-#     it 'posts_counter should have post' do
-#       post_count = user_test.posts_counter
-#       expect(post_count).to be(4)
-#     end
-#     it 'recent_comments should have 5 ' do
-#       post_count = last_post.retrieve_recent_comments.count
-#       expect(post_count).to be(5)
-#     end
-#     it 'recent_comments should have 1' do
-#       post_count = third_post.retrieve_recent_comments.count
-#       expect(post_count).to be(1)
-#     end
-#   end
+    it 'posts_counter should have post' do
+      post_count = user_test.posts_counter
+      expect(post_count).to be(4)
+    end
+    it 'recent_comments should have 5 ' do
+      post_count = last_post.recent_comments.count
+      expect(post_count).to be(5)
+    end
+    it 'recent_comments should have 1' do
+      post_count = third_post.recent_comments.count
+      expect(post_count).to be(1)
+    end
+  end
 end

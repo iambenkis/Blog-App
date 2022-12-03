@@ -12,10 +12,10 @@ RSpec.describe Like, type: :model do
       post_like = first_post.likes_counter
       expect(post_like).to be(0)
     end
-    # it 'Like should have at least one like' do
-    #   Like.create(post: first_post, author: second_user)
-    #   post_like = first_post.likes_counter
-    #   expect(post_like).to be(1)
-    # end
+    it 'Like should have at least one like' do
+      Like.create(post: first_post, author: second_user)
+      post_like = first_post.likes_counter
+      expect(post_like).to be(1)
+    end
   end
 end
