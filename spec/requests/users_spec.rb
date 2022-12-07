@@ -17,4 +17,18 @@ RSpec.describe 'Users', type: :request do
       expect(response.body).to include("Here is a list of ALL Users, you are in '/' or '/users'")
     end
   end
+
+  describe 'GET /show' do
+    before :each do
+      get '/users/1'
+    end
+
+    it 'is a success' do
+      expect(response).to have_http_status(200)
+    end
+
+    it 'should render show' do
+      expect(response.body).to include("Here is a single User for a given user you are in '/users/user_id' starting by 1")
+    end
+  end
 end
