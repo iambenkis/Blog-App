@@ -117,6 +117,9 @@ To run the project, execute the following command:
 
 ```sh
   rails server or rails s
+  rails db:drop
+  rails db:create
+  rails db:migrate
 ``` 
 
 
@@ -152,8 +155,8 @@ Example:
 
 > Describe 1 - 3 features you will add to the project.
 
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
+- [ ] **[View of the blog application]**
+- [ ] **[Deployement]**
 - [ ] **[new_feature_3]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
