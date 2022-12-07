@@ -20,12 +20,20 @@ RSpec.describe 'Posts', type: :request do
   end
 
   describe 'GET /show' do
-    get '/users/:user_id/posts/'
+    before :each do
+      get '/users/:user_id/posts/1'
+    end
+
+    it 'return http success' do
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'sould render index' do
+      expect(response).to render_template(:show)
+    end
+
+    it 'should return a correct placeholder ' do
+      expect(response.body).to include("Here is a single Post for a given user you are in '/users/user_id/posts'")
+    end
   end
 end
-
-# RSpec.describe PostsController, type: :controller do
-#   describe "GET posts#index" do
-
-#   end
-# end
