@@ -5,7 +5,7 @@ RSpec.describe 'Users', type: :request do
     before :each do
       get '/users'
     end
-    it "is a success" do
+    it 'is a success' do
       expect(response).to have_http_status(:success)
     end
 
@@ -28,7 +28,9 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'should render show' do
-      expect(response.body).to include("Here is a single User for a given user you are in '/users/user_id' starting by 1")
+      expect(
+        response.body
+      ).to include("Here is a single User for a given user you are in '/users/user_id' starting by 1")
     end
   end
 end
