@@ -18,6 +18,10 @@ RSpec.describe 'Posts', type: :request do
       expect(response.body).to include("Here are ALL Posts for a given user you are in '/users/user_id/posts'")
     end
   end
+
+  describe 'GET /show' do
+    get '/users/:user_id/posts/'
+  end
 end
 
 # RSpec.describe PostsController, type: :controller do
