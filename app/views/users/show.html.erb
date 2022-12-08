@@ -1,24 +1,13 @@
 <section class='user-details'>
     <nav>
-        <img src='<%= @user.name %>' alt='avatar' >
-        <div>
-            <h2><%= @user.name %></h2>
-            <span>Post counter: <%= @user.posts_counter %></span>
-        </div>
+        <%= render "users/user", user: @user %>
     </nav>
     <div class='bio'>
         <h3>Bio</h3>
         <p><%= @user.bio%></p>
     </div>
     <% @user.recent_posts.each do |post| %>
-        <div class='post-item'>
-            <h3>Post #<%= post.id %> <%= post.title %></h3>
-            <p><%= post.text%></p>
-            <div class='post-details'>
-                <p>Comments: x</p>
-                <p>Likes: y</p>
-            </div>
-        </div>
+        <%= render 'posts/post', post: post %>
     <% end %>
     <button type="button" class="see-all-posts">See all posts</button>
 </section>

@@ -1,3 +1,5 @@
-<% @users.each do |user| %>
-  <%= render "users/user", user: user %>
-<% end %>
+<section class='users-list'>
+  <% @users.each do |user| %>
+    <%= render "users/user", user: user %>
+  <% end %>
+</section>
