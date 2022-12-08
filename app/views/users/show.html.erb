@@ -1,3 +1,20 @@
-<%# <% User.find_by(id: user_id)%>
-    <%# <h1><> %>
-<%# <% end %> %> %>
+<section class='user-details'>
+    <nav>
+        <img src='<%= @user.name %>' alt='avatar' >
+        <div>
+            <h2><%= @user.name %></h2>
+            <span>Post counter: <%= @user.posts_counter %></span>
+        </div>
+    </nav>
+    <div class='bio'>
+        <h3>Bio</h3>
+        <p><%= @user.bio%></p>
+    </div>
+    <% @user.recent_posts.each do |post| %>
+        <div class='post-item'>
+            <h3>Post #<%= post.id %> <%= post.title %></h3>
+            <p><%= post.text%></p>
+        </div>
+    <% end %>
+</section>
+
