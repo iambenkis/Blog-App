@@ -14,7 +14,12 @@
         <div class='post-item'>
             <h3>Post #<%= post.id %> <%= post.title %></h3>
             <p><%= post.text%></p>
+            <div class='post-details'>
+                <p>Comments: x</p>
+                <p>Likes: y</p>
+            </div>
         </div>
     <% end %>
+    <button type="button" class="see-all-posts">See all posts</button>
 </section>
 
