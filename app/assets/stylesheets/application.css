@@ -143,3 +143,29 @@ body {
   height: 2rem;
   margin-top: 1rem;
 }
+
+.like-post {
+  border: 2px solid #000;
+  padding: 0.5rem 1rem;
+  margin-top: .5rem;
+  cursor: pointer;
+  margin-right: 20rem;
+  margin-bottom: .5rem;
+}
+
+.post-feature .submit-comment {
+  border: 2px solid #000;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.post-feature  .comment {
+  border: 2px solid #000;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
+.comment-section {
+  display: flex;
+}
