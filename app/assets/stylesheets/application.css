@@ -112,3 +112,10 @@ body {
   border: 2px solid #000;
   margin-top: 1rem;
 }
+
+.see-all-posts {
+  border: 2px solid #000;
+  padding: .5rem 1rem;
+  margin-left: 38%;
+  margin-top: 1rem;
+}
