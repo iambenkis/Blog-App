@@ -1,21 +1,16 @@
-<div class='mt-3 d-flex align-items-center flex-column'>
-  <div class="card mb-3" style="width: 670px;">
-    <div class="card-header text-white">
-      <div class='row'>
-        <div><%= @post.title %> by <%= @user.name %></div>
-        <div class='col-md-4 d-flex gap-2'>
-          <p class="card-text">Comments: <%= @post.comments.size %></p>
-          <p class="card-text">Likes: <%= @post.likes.size %></p>
+<div class="my-comment">
+  <div class="comment-bio">
+      <div class='comment-header'>
+        <p class='title'><%= @post.title %> by <%= @user.name %></p>
+        <div class='comment-details'>
+            <p>Comments: <%= @post.comments.size %></p>
+            <p>Likes: <%= @post.likes.size %></p>
         </div>
       </div>
-    </div>
-    <div class="card-body">
-      <p class="card-text"><%= @post.text%></p>
-    </div>
+      <p class="comment-text"><%= @post.text%></p>
   </div>
-  <h3>Comments</h3>
-    <div class="card mb-3">
-      <div class="card-body">
+  <div class="comments">
+      <div class="comment-item">
         <% @post.comments.each do |comment|%>
             <p><%= comment.author.name %> <%= comment.text %></p>
         <% end %>
