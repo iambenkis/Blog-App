@@ -3,11 +3,11 @@
         <%= render 'users/user', user: @user %>
     </nav>
     <div>
-        <% @user.recent_posts.each do |post| %>
+        <% @user.recent_posts.each_with_index do |post, id| %>
             <%= render 'posts/post', post: post %>
             <div class='user-comments'>
-                <% post.recent_comments.each do |comment| %>
-                    <p>Username <%= comment %></p>
+                <% @posts[id].recent_comments.each do |comment| %>
+                    <p><%= comment.author.name %> <%= comment.text %></p>
                 <% end %>
             </div>
         <% end %>

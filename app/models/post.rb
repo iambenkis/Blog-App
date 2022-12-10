@@ -2,8 +2,8 @@ class Post < ApplicationRecord
 
   after_save :update_posts_counter
 
-  has_many :comments
-  has_many :likes
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   belongs_to :author, class_name: 'User'
 
   validates :title, presence: true, allow_blank: false, allow_nil: false, length: { maximum: 250 }

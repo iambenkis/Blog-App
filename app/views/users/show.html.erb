@@ -9,6 +9,8 @@
     <% @user.recent_posts.each do |post| %>
         <%= render 'posts/post', post: post %>
     <% end %>
-    <button type="button" class="see-all-posts">See all posts</button>
+    <button type="button" class="see-all-posts">
+        <%= link_to "See All Posts", user_posts_path(@user) %>
+    </button>
 </section>
 
