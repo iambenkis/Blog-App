@@ -23495,3 +23495,111 @@ Did you mean?  compute_asset_path):
    10:   </div>
   
 app/views/users/index.html.erb:7
+Started GET "/" for 127.0.0.1 at 2022-12-10 19:49:09 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 1.3ms | Allocations: 341)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 15.4ms | Allocations: 3501)
+  Rendered layout layouts/application.html.erb (Duration: 188.9ms | Allocations: 35585)
+Completed 200 OK in 212ms (Views: 188.4ms | ActiveRecord: 8.3ms | Allocations: 40895)
+
+
+Started GET "/ben%20picture" for 127.0.0.1 at 2022-12-10 19:49:10 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/ben%20picture"):
+  
+Started GET "/" for 127.0.0.1 at 2022-12-10 19:56:30 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 1.9ms | Allocations: 341)
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.5ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 24.7ms | Allocations: 3571)
+  Rendered layout layouts/application.html.erb (Duration: 32.3ms | Allocations: 5305)
+Completed 200 OK in 132ms (Views: 35.7ms | ActiveRecord: 35.8ms | Allocations: 13290)
+
+
+Started GET "/ben%20picture" for 127.0.0.1 at 2022-12-10 19:56:31 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/ben%20picture"):
+  
+Started GET "/users/1" for 127.0.0.1 at 2022-12-10 19:56:36 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (51.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 111)
+  [1m[36mPost Load (95.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 5]]
+  ↳ app/views/users/show.html.erb:9
+  Rendered users/show.html.erb within layouts/application (Duration: 489.5ms | Allocations: 9865)
+  Rendered layout layouts/application.html.erb (Duration: 493.1ms | Allocations: 11340)
+Completed 200 OK in 568ms (Views: 393.6ms | ActiveRecord: 152.6ms | Allocations: 14408)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 19:56:37 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.5ms | Allocations: 957)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/1/posts" for 127.0.0.1 at 2022-12-10 19:56:38 +0200
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.5ms | Allocations: 136)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:5:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 1390)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | Allocations: 2928)
+Completed 200 OK in 19ms (Views: 14.8ms | ActiveRecord: 1.3ms | Allocations: 4526)
+
+
+Started GET "/users/1/ben%20picture" for 127.0.0.1 at 2022-12-10 19:56:39 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/ben%20picture"):
+  
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 19:56:43 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 30.0ms | Allocations: 2692)
+  Rendered layout layouts/application.html.erb (Duration: 33.0ms | Allocations: 3831)
+Completed 200 OK in 53ms (Views: 34.1ms | ActiveRecord: 3.5ms | Allocations: 18818)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 20:25:08 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1248)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 2620)
+Completed 200 OK in 20ms (Views: 18.9ms | Allocations: 3801)
+
+
+Started GET "/posts" for 127.0.0.1 at 2022-12-10 20:25:12 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  
