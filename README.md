@@ -117,6 +117,7 @@ To run the project, execute the following command:
 
 ```sh
   rails server or rails s
+
   rails db:drop
   rails db:create
   rails db:migrate

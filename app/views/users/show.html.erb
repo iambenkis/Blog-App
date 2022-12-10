@@ -1,2 +1,16 @@
-<h1>Users show</h1>
-<p>Here is a single User for a given user you are in '/users/user_id' starting by 1</p>
+<section class='user-details'>
+    <nav>
+        <%= render "users/user", user: @user %>
+    </nav>
+    <div class='bio'>
+        <h3>Bio</h3>
+        <p><%= @user.bio%></p>
+    </div>
+    <% @user.recent_posts.each do |post| %>
+        <%= render 'posts/post', post: post %>
+    <% end %>
+    <button type="button" class="see-all-posts">
+        <%= link_to "See All Posts", user_posts_path(@user) %>
+    </button>
+</section>
+
