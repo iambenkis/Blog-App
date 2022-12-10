@@ -25445,3 +25445,786 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 45ms (Views: 32.7ms | ActiveRecord: 7.3ms | Allocations: 8045)
 
 
+Started POST "/users/2/posts/34/likes" for 127.0.0.1 at 2022-12-10 20:58:53 +0200
+Processing by PostsController#create_like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like", "user_id"=>"2", "id"=>"34"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22:in `create_like'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-12-10 18:58:53.339035"], ["updated_at", "2022-12-10 18:58:53.339035"], ["author_id", 1], ["post_id", 34]]
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mPost Update (0.5ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["likes_counter", 4], ["updated_at", "2022-12-10 18:58:53.349447"], ["id", 34]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mPost Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mTRANSACTION (51.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+Redirected to http://127.0.0.1:3000/users/2/posts/34
+Completed 302 Found in 77ms (ActiveRecord: 54.5ms | Allocations: 6515)
+
+
+Started GET "/users/2/posts/34" for 127.0.0.1 at 2022-12-10 20:58:53 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"2", "id"=>"34"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  Rendered posts/show.html.erb within layouts/application (Duration: 24.4ms | Allocations: 5768)
+  Rendered layout layouts/application.html.erb (Duration: 27.0ms | Allocations: 6786)
+Completed 200 OK in 34ms (Views: 25.9ms | ActiveRecord: 2.9ms | Allocations: 8040)
+
+
+Started POST "/users/2/posts/34" for 127.0.0.1 at 2022-12-10 20:58:57 +0200
+Processing by PostsController#create_comment as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"cjcc"}, "commit"=>"Comment", "user_id"=>"2", "id"=>"34"}
+  [1m[36mPost Load (2.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:16:in `create_comment'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mComment Create (0.7ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "cjcc"], ["created_at", "2022-12-10 18:58:57.327083"], ["updated_at", "2022-12-10 18:58:57.327083"], ["author_id", 1], ["post_id", 34]]
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mPost Update All (2.5ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 34]]
+  ↳ app/models/comment.rb:8:in `update_comments_counter'
+  [1m[36mTRANSACTION (55.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+Redirected to http://127.0.0.1:3000/users/2/posts/34
+Completed 302 Found in 83ms (ActiveRecord: 64.4ms | Allocations: 3845)
+
+
+Started GET "/users/2/posts/34" for 127.0.0.1 at 2022-12-10 20:58:57 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"2", "id"=>"34"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  Rendered posts/show.html.erb within layouts/application (Duration: 36.6ms | Allocations: 6350)
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | Allocations: 7373)
+Completed 200 OK in 51ms (Views: 32.0ms | ActiveRecord: 10.2ms | Allocations: 8626)
+
+
+Started GET "/users/" for 127.0.0.1 at 2022-12-10 21:00:01 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 134)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1340)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 2907)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.8ms | Allocations: 3836)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:00:01 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.9ms | Allocations: 958)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/" for 127.0.0.1 at 2022-12-10 21:00:56 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 0.5ms | Allocations: 65)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.5ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 8.0ms | Allocations: 1156)
+  Rendered layout layouts/application.html.erb (Duration: 19.8ms | Allocations: 4492)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.5ms | Allocations: 4850)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:00:56 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 912)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/" for 127.0.0.1 at 2022-12-10 21:01:23 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 1.1ms | Allocations: 319)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1815)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 3566)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.4ms | Allocations: 4703)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:01:23 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.4ms | Allocations: 953)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/" for 127.0.0.1 at 2022-12-10 21:01:35 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 0.5ms | Allocations: 65)
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1156)
+  Rendered layout layouts/application.html.erb (Duration: 49.2ms | Allocations: 3909)
+Completed 200 OK in 51ms (Views: 49.7ms | ActiveRecord: 0.4ms | Allocations: 4268)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:01:35 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 11ms (ActiveRecord: 1.0ms | Allocations: 2214)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/" for 127.0.0.1 at 2022-12-10 21:01:42 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 65)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1155)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 5369)
+Completed 200 OK in 22ms (Views: 17.1ms | ActiveRecord: 0.4ms | Allocations: 5701)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:01:42 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 15ms (ActiveRecord: 5.7ms | Allocations: 1786)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/" for 127.0.0.1 at 2022-12-10 21:01:47 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 65)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 1156)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 4465)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 1.2ms | Allocations: 4797)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:01:48 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 8ms (ActiveRecord: 2.9ms | Allocations: 912)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/" for 127.0.0.1 at 2022-12-10 21:01:56 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 0.6ms | Allocations: 65)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 14.4ms | Allocations: 1155)
+  Rendered layout layouts/application.html.erb (Duration: 19.8ms | Allocations: 2536)
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 1.2ms | Allocations: 2869)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:01:56 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.3ms | Allocations: 912)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:01:59 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1262)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 2452)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.0ms | Allocations: 3402)
+
+
+Started GET "/users/" for 127.0.0.1 at 2022-12-10 21:02:10 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 80)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1237)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 2630)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.5ms | Allocations: 3003)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:02:10 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.5ms | Allocations: 948)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/" for 127.0.0.1 at 2022-12-10 21:02:20 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 65)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1155)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 2541)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.6ms | Allocations: 2873)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:02:20 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.4ms | Allocations: 912)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/" for 127.0.0.1 at 2022-12-10 21:02:42 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 65)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1156)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 5008)
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.5ms | Allocations: 5340)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:02:42 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 912)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:02:44 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 812)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 1843)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 2167)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:02:54 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.4ms | Allocations: 911)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/5" for 127.0.0.1 at 2022-12-10 21:02:57 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 67)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 5], ["LIMIT", 5]]
+  ↳ app/views/users/show.html.erb:9
+  Rendered users/show.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1165)
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 2502)
+Completed 200 OK in 14ms (Views: 10.0ms | ActiveRecord: 0.7ms | Allocations: 3326)
+
+
+Started GET "/users/5/posts" for 127.0.0.1 at 2022-12-10 21:03:00 +0200
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.5ms | Allocations: 79)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 5], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:5:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1115)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 2447)
+Completed 200 OK in 14ms (Views: 9.6ms | ActiveRecord: 0.7ms | Allocations: 3299)
+
+
+Started GET "/users/5/posts" for 127.0.0.1 at 2022-12-10 21:03:05 +0200
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 67)
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 5], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:5:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 810)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 2144)
+Completed 200 OK in 17ms (Views: 10.5ms | ActiveRecord: 2.0ms | Allocations: 2942)
+
+
+Started GET "/users/5" for 127.0.0.1 at 2022-12-10 21:03:07 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 67)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 5], ["LIMIT", 5]]
+  ↳ app/views/users/show.html.erb:9
+  Rendered users/show.html.erb within layouts/application (Duration: 4.3ms | Allocations: 870)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 2194)
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 0.6ms | Allocations: 2963)
+
+
+Started GET "/users/5/posts" for 127.0.0.1 at 2022-12-10 21:03:08 +0200
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 67)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 5], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:5:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 810)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 2139)
+Completed 200 OK in 15ms (Views: 11.3ms | ActiveRecord: 0.9ms | Allocations: 2937)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2022-12-10 21:03:16 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 65)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 5]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mComment Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/_post.html.erb:7
+  [1m[36mLike Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/_post.html.erb:8
+  Rendered posts/_post.html.erb (Duration: 10.3ms | Allocations: 1608)
+  Rendered users/show.html.erb within layouts/application (Duration: 16.9ms | Allocations: 2606)
+  Rendered layout layouts/application.html.erb (Duration: 22.6ms | Allocations: 3916)
+Completed 200 OK in 29ms (Views: 22.7ms | ActiveRecord: 1.6ms | Allocations: 4685)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:03:16 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 912)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/1/posts/37" for 127.0.0.1 at 2022-12-10 21:03:18 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"37"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  Rendered posts/show.html.erb within layouts/application (Duration: 16.9ms | Allocations: 3840)
+  Rendered layout layouts/application.html.erb (Duration: 19.6ms | Allocations: 4863)
+Completed 200 OK in 31ms (Views: 18.6ms | ActiveRecord: 4.3ms | Allocations: 6172)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:03:21 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.3ms | Allocations: 912)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/1" for 127.0.0.1 at 2022-12-10 21:03:26 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 65)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 5]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/_post.html.erb:7
+  [1m[36mLike Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/_post.html.erb:8
+  Rendered posts/_post.html.erb (Duration: 8.1ms | Allocations: 1407)
+  Rendered users/show.html.erb within layouts/application (Duration: 12.6ms | Allocations: 2347)
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | Allocations: 3688)
+Completed 200 OK in 23ms (Views: 16.9ms | ActiveRecord: 2.0ms | Allocations: 4457)
+
+
+Started GET "/users/ben%20picture" for 127.0.0.1 at 2022-12-10 21:03:26 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"ben picture"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.5ms | Allocations: 912)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ben picture):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/1/posts" for 127.0.0.1 at 2022-12-10 21:03:28 +0200
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 65)
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:5:in `each_with_index'
+  [1m[36mComment Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/_post.html.erb:7
+  [1m[36mLike Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/_post.html.erb:8
+  Rendered posts/_post.html.erb (Duration: 8.1ms | Allocations: 1412)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 37], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:9
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:12
+  Rendered posts/index.html.erb within layouts/application (Duration: 20.1ms | Allocations: 3591)
+  Rendered layout layouts/application.html.erb (Duration: 24.4ms | Allocations: 4916)
+Completed 200 OK in 30ms (Views: 20.8ms | ActiveRecord: 4.6ms | Allocations: 5714)
+
+
+Started GET "/users/1/ben%20picture" for 127.0.0.1 at 2022-12-10 21:03:28 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/ben%20picture"):
+  
+Started GET "/users/1/posts/37" for 127.0.0.1 at 2022-12-10 21:03:31 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"37"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 37]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  Rendered posts/show.html.erb within layouts/application (Duration: 13.0ms | Allocations: 3427)
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 4450)
+Completed 200 OK in 23ms (Views: 15.5ms | ActiveRecord: 2.8ms | Allocations: 5702)
+
+
+Started GET "/users/posts" for 127.0.0.1 at 2022-12-10 21:04:08 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"posts"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 912)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=posts):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users" for 127.0.0.1 at 2022-12-10 21:04:13 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 0.5ms | Allocations: 65)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 50)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 51)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1156)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 2489)
+Completed 200 OK in 13ms (Views: 9.1ms | ActiveRecord: 2.2ms | Allocations: 2821)
+
+
+Started GET "/ben%20picture" for 127.0.0.1 at 2022-12-10 21:04:13 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/ben%20picture"):
+  
+Started GET "/posts" for 127.0.0.1 at 2022-12-10 21:04:16 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  
+Started GET "/posts//new" for 127.0.0.1 at 2022-12-10 21:04:24 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 824)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 1855)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.0ms | Allocations: 2174)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:05:04 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 818)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 2476)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms | Allocations: 2795)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:05:17 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 820)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 1846)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 2165)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:05:41 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 816)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 1842)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.0ms | Allocations: 2161)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:06:34 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1263)
+  Rendered layout layouts/application.html.erb (Duration: 62.4ms | Allocations: 4638)
+Completed 200 OK in 68ms (Views: 66.7ms | ActiveRecord: 0.0ms | Allocations: 5774)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:06:35 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 828)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 1854)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 2198)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:07:13 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 818)
+  Rendered layout layouts/application.html.erb (Duration: 48.1ms | Allocations: 4742)
+Completed 200 OK in 51ms (Views: 50.4ms | ActiveRecord: 0.0ms | Allocations: 5061)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:07:32 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 816)
+  Rendered layout layouts/application.html.erb (Duration: 39.3ms | Allocations: 3817)
+Completed 200 OK in 42ms (Views: 41.2ms | ActiveRecord: 0.0ms | Allocations: 4136)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:07:41 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 816)
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | Allocations: 3182)
+Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 0.0ms | Allocations: 3501)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:09:18 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 826)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 4710)
+Completed 200 OK in 11ms (Views: 10.2ms | Allocations: 5026)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:09:28 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 826)
+  Rendered layout layouts/application.html.erb (Duration: 19.9ms | Allocations: 5193)
+Completed 200 OK in 22ms (Views: 21.0ms | Allocations: 5509)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-10 21:27:56 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 806)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 4657)
+Completed 200 OK in 18ms (Views: 17.1ms | Allocations: 4973)
+
+
