@@ -15,7 +15,10 @@
             <p><%= comment.author.name %> <%= comment.text %></p>
         <% end %>
       </div>
-    </div>
+  </div>
+  <%= form_with model: @like, url: like_path, method: :post do |f| %>
+      <%= f.submit "Like", class: "btn btn-danger" %>
+  <% end %>
 </div>
 
 <%= form_with model: @comment, url: post_path, method: :post, scope: :comment do |f| %>
