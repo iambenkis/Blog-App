@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Posts', type: :request do
   describe 'GET /index' do
     before :each do
-      get '/users/:user_id/posts/'
+      get '/users/1/posts/'
     end
 
     it 'returns http success' do
@@ -15,13 +15,13 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'should include correct placeholder' do
-      expect(response.body).to include("Here are ALL Posts for a given user you are in '/users/user_id/posts'")
+      expect(response.body).to include("Post")
     end
   end
 
   describe 'GET /show' do
     before :each do
-      get '/users/:user_id/posts/1'
+      get '/users/1/posts/1'
     end
 
     it 'return http success' do
@@ -33,7 +33,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'should return a correct placeholder ' do
-      expect(response.body).to include('Post')
+      expect(response.body).to include("Comments:")
     end
   end
 end

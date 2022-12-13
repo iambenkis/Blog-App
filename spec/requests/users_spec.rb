@@ -14,7 +14,7 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'should return the correct placeholder' do
-      expect(response.body).to include("Here is a list of ALL Users, you are in '/' or '/users'")
+      expect(response.body).to include("Post")
     end
   end
 
@@ -30,7 +30,7 @@ RSpec.describe 'Users', type: :request do
     it 'should render show' do
       expect(
         response.body
-      ).to include("Here is a single User for a given user you are in '/users/user_id' starting by 1")
+      ).to include("Post #")
     end
   end
 end
