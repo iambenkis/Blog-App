@@ -14,7 +14,7 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'should return the correct placeholder' do
-      expect(response.body).to include("Post")
+      expect(response.body).to include('Post')
     end
   end
 
@@ -30,7 +30,7 @@ RSpec.describe 'Users', type: :request do
     it 'should render show' do
       expect(
         response.body
-      ).to include("Post #")
+      ).to include('Post #')
     end
   end
 end

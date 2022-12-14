@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'User show page', type: :feature do
   before(:example) do
-    @subject1 = User.create(name: 'Alan Luqman',photo: 'user picture', bio: 'Teacher from UK.')
+    @subject1 = User.create(name: 'Alan Luqman', photo: 'user picture', bio: 'Teacher from UK.')
     @post = Post.create(author: @subject1, title: 'demo', text: 'rails testing project')
 
     Post.create(author: @subject1, title: 'nick', text: 'nick start new role as web developer')
@@ -30,7 +30,7 @@ RSpec.describe 'User show page', type: :feature do
     end
 
     it '-> I can see the users first 5 posts.' do
-        # puts page.has_content?
+      # puts page.has_content?
       expect(page).to have_content('nick')
       expect(page).to have_content('rex')
       expect(page).to have_content('rex')
