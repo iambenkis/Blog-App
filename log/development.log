@@ -28024,3 +28024,172 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 72ms (Views: 42.1ms | ActiveRecord: 17.3ms | Allocations: 14261)
 
 
+Started GET "/users/2/posts/34" for 127.0.0.1 at 2022-12-14 12:41:52 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"2", "id"=>"34"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (4.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 34], ["LIMIT", 5]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (Duration: 1407.1ms | Allocations: 7267)
+  Rendered layout layouts/application.html.erb (Duration: 1458.8ms | Allocations: 8399)
+Completed 200 OK in 1495ms (Views: 1453.2ms | ActiveRecord: 22.1ms | Allocations: 14437)
+
+
+Started GET "/users/2/posts/34" for 127.0.0.1 at 2022-12-14 12:43:06 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"2", "id"=>"34"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:7
+  Rendered posts/show.html.erb within layouts/application (Duration: 145.0ms | Allocations: 8601)
+  Rendered layout layouts/application.html.erb (Duration: 145.4ms | Allocations: 8690)
+Completed 500 Internal Server Error in 230ms (ActiveRecord: 1.7ms | Allocations: 10859)
+
+
+  
+ActionView::Template::Error (undefined method `all' for #<Post id: 34, title: "How are you", text: "This is my second post", comments_counter: 9, likes_counter: 5, created_at: "2022-12-02 14:40:09.840691000 +0000", updated_at: "2022-12-10 19:47:30.641789000 +0000", author_id: 2>):
+    11:   </div>
+    12:   <div class="comments">
+    13:       <div class="comment-item">
+    14:         <% @post.all.each do |comment|%>
+    15:             <p><%= comment.author.name %> <%= comment.text %></p>
+    16:         <% end %>
+    17:       </div>
+  
+app/views/posts/show.html.erb:14
+Started GET "/users/2/posts/34" for 127.0.0.1 at 2022-12-14 12:43:25 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"2", "id"=>"34"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:7
+  Rendered posts/show.html.erb within layouts/application (Duration: 12.1ms | Allocations: 3338)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 3415)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.8ms | Allocations: 5528)
+
+
+  
+ActionView::Template::Error (undefined method `all' for nil:NilClass):
+    11:   </div>
+    12:   <div class="comments">
+    13:       <div class="comment-item">
+    14:         <% @posts.all.each do |comment|%>
+    15:             <p><%= comment.author.name %> <%= comment.text %></p>
+    16:         <% end %>
+    17:       </div>
+  
+app/views/posts/show.html.erb:14
+Started GET "/users/2/posts/34" for 127.0.0.1 at 2022-12-14 12:44:02 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"2", "id"=>"34"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:7
+  Rendered posts/show.html.erb within layouts/application (Duration: 13.1ms | Allocations: 3338)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 3415)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 2.9ms | Allocations: 5483)
+
+
+  
+ActionView::Template::Error (undefined method `comments' for nil:NilClass):
+    11:   </div>
+    12:   <div class="comments">
+    13:       <div class="comment-item">
+    14:         <% @posts.comments.each do |comment|%>
+    15:             <p><%= comment.author.name %> <%= comment.text %></p>
+    16:         <% end %>
+    17:       </div>
+  
+app/views/posts/show.html.erb:14
+Started GET "/users/2/posts/34" for 127.0.0.1 at 2022-12-14 12:44:11 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"2", "id"=>"34"}
+  [1m[36mPost Load (2.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (6.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (1.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:15
+  Rendered posts/show.html.erb within layouts/application (Duration: 57.5ms | Allocations: 10542)
+  Rendered layout layouts/application.html.erb (Duration: 78.0ms | Allocations: 11905)
+Completed 200 OK in 93ms (Views: 72.8ms | ActiveRecord: 14.4ms | Allocations: 14008)
+
+
+Started GET "/users/2/posts/34" for 127.0.0.1 at 2022-12-14 12:44:45 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"2", "id"=>"34"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (1.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 34]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (Duration: 26.8ms | Allocations: 4669)
+  Rendered layout layouts/application.html.erb (Duration: 35.2ms | Allocations: 6028)
+Completed 200 OK in 47ms (Views: 33.9ms | ActiveRecord: 7.2ms | Allocations: 8146)
+
+

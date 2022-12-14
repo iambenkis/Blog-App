@@ -11,7 +11,7 @@
   </div>
   <div class="comments">
       <div class="comment-item">
-        <% @post.recent_comments.each do |comment|%>
+        <% @post.comments.includes(:author).each do |comment|%>
             <p><%= comment.author.name %> <%= comment.text %></p>
         <% end %>
       </div>
