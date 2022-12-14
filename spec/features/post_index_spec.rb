@@ -43,6 +43,10 @@ RSpec.describe 'Post index page', type: :feature do
       expect(page).to have_content(@post.likes_counter)
     end
 
+    it 'to show the Pagination buttons' do
+      expect(page).to have_content('Prev 1 Next')
+    end
+
     it 'When I click on a post, it redirects me to that post show page.' do
       click_link(@post.title)
       expect(current_path).to match user_post_path(user_id: @subject1.id, id: @post.id)
