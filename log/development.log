@@ -29301,3 +29301,924 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 74ms (Views: 64.8ms | ActiveRecord: 4.8ms | Allocations: 17691)
 
 
+  [1m[35m (1055.0ms)[0m  [1m[35mCREATE DATABASE "blogApp_development" ENCODING = 'unicode'[0m
+  [1m[35m (974.3ms)[0m  [1m[35mCREATE DATABASE "blogApp_test" ENCODING = 'unicode'[0m
+  [1m[35m (131.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (109.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4753324116888153030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to Comments (20221201181042)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "comments"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4753324116888153030)[0m
+  [1m[35m (20.7ms)[0m  [1m[35mCREATE DATABASE "blogApp_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE DATABASE "blogApp_test" ENCODING = 'unicode'[0m
+  [1m[35m (1068.5ms)[0m  [1m[35mCREATE DATABASE "blogApp_development" ENCODING = 'unicode'[0m
+  [1m[35m (1090.4ms)[0m  [1m[35mCREATE DATABASE "blogApp_test" ENCODING = 'unicode'[0m
+  [1m[35m (159.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (130.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4753324116888153030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20221201184100)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (125.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "photo" character varying, "bio" character varying, "posts_counter" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201184100"]]
+  [1m[36mTRANSACTION (21.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLikes (20221201190339)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (68.6ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201190339"]]
+  [1m[36mTRANSACTION (21.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddForeignKeyToLikes (20221201190518)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "likes" ADD "posts_id" bigint NOT NULL[0m
+  [1m[35m (67.0ms)[0m  [1m[35mCREATE INDEX "index_likes_on_posts_id" ON "likes" ("posts_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_b1afef8225"
+FOREIGN KEY ("posts_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4753324116888153030)[0m
+  [1m[35m (1012.4ms)[0m  [1m[35mCREATE DATABASE "blogApp_development" ENCODING = 'unicode'[0m
+  [1m[35m (1232.9ms)[0m  [1m[35mCREATE DATABASE "blogApp_test" ENCODING = 'unicode'[0m
+  [1m[35m (158.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (141.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4753324116888153030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20221201184100)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (109.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "photo" character varying, "bio" character varying, "posts_counter" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201184100"]]
+  [1m[36mTRANSACTION (25.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLikes (20221201190339)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (41.3ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201190339"]]
+  [1m[36mTRANSACTION (28.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20221201190905)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (130.0ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "title" character varying, "text" character varying, "comments_counter" integer, "likes_counter" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201190905"]]
+  [1m[36mTRANSACTION (26.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUsersToPosts (20221201191540)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "posts" ADD "users_id" bigint NOT NULL[0m
+  [1m[35m (84.2ms)[0m  [1m[35mCREATE INDEX "index_posts_on_users_id" ON "posts" ("users_id")[0m
+  [1m[35m (32.4ms)[0m  [1m[35mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_403c3577f5"
+FOREIGN KEY ("users_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201191540"]]
+  [1m[36mTRANSACTION (38.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAuthorToLikes (20221201192340)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "likes" ADD "author_id" bigint NOT NULL[0m
+  [1m[35m (50.7ms)[0m  [1m[35mCREATE INDEX "index_likes_on_author_id" ON "likes" ("author_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_1f2302367a"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201192340"]]
+  [1m[36mTRANSACTION (20.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20221201194057)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (134.8ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "text" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201194057"]]
+  [1m[36mTRANSACTION (22.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAuthorToComments (20221201194313)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "comments" ADD "author_id" bigint NOT NULL[0m
+  [1m[35m (88.3ms)[0m  [1m[35mCREATE INDEX "index_comments_on_author_id" ON "comments" ("author_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_f44b1e3c8a"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201194313"]]
+  [1m[36mTRANSACTION (17.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAuthorToPosts (20221201194449)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "posts" ADD "author_id" bigint NOT NULL[0m
+  [1m[35m (77.4ms)[0m  [1m[35mCREATE INDEX "index_posts_on_author_id" ON "posts" ("author_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_04d13ef8c7"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201194449"]]
+  [1m[36mTRANSACTION (18.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPostsToComments (20221201194640)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "comments" ADD "posts_id" bigint NOT NULL[0m
+  [1m[35m (79.2ms)[0m  [1m[35mCREATE INDEX "index_comments_on_posts_id" ON "comments" ("posts_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_581572ac1f"
+FOREIGN KEY ("posts_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201194640"]]
+  [1m[36mTRANSACTION (15.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPostsToLikes (20221201194706)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "likes" ADD "posts_id" bigint NOT NULL[0m
+  [1m[35m (59.2ms)[0m  [1m[35mCREATE INDEX "index_likes_on_posts_id" ON "likes" ("posts_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_b1afef8225"
+FOREIGN KEY ("posts_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201194706"]]
+  [1m[36mTRANSACTION (25.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveUsersFromLikes (20221201200842)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(4753324116888153030)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4753324116888153030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveUsersFromPosts (20221201200927)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "posts" DROP CONSTRAINT "fk_rails_403c3577f5"[0m
+  [1m[35m (42.2ms)[0m  [1m[35mALTER TABLE "posts" DROP COLUMN "users_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221201200927"]]
+  [1m[36mTRANSACTION (36.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemovePostsFromComments (20221202145640)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "comments" DROP CONSTRAINT "fk_rails_581572ac1f"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "comments" DROP COLUMN "posts_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221202145640"]]
+  [1m[36mTRANSACTION (38.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPostToComments (20221202145748)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "comments" ADD "post_id" bigint NOT NULL[0m
+  [1m[35m (90.6ms)[0m  [1m[35mCREATE INDEX "index_comments_on_post_id" ON "comments" ("post_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221202145748"]]
+  [1m[36mTRANSACTION (26.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDefaultValueToPostsCounterForUsers (20221203135958)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ALTER COLUMN "posts_counter" SET DEFAULT 0[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221203135958"]]
+  [1m[36mTRANSACTION (37.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDefaultValueToLikesCounterForPosts (20221203140321)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "posts" ALTER COLUMN "likes_counter" SET DEFAULT 0[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221203140321"]]
+  [1m[36mTRANSACTION (32.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDefaultValueToCommentsCounterForPosts (20221203140408)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "posts" ALTER COLUMN "comments_counter" SET DEFAULT 0[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221203140408"]]
+  [1m[36mTRANSACTION (44.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemovePostsFromLikes (20221203144840)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "likes" DROP CONSTRAINT "fk_rails_b1afef8225"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "likes" DROP COLUMN "posts_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221203144840"]]
+  [1m[36mTRANSACTION (50.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPostToLikes (20221203145008)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "likes" ADD "post_id" bigint NOT NULL[0m
+  [1m[35m (82.5ms)[0m  [1m[35mCREATE INDEX "index_likes_on_post_id" ON "likes" ("post_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_87a8aac469"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221203145008"]]
+  [1m[36mTRANSACTION (23.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-14 22:00:32.483982"], ["updated_at", "2022-12-14 22:00:32.483982"]]
+  [1m[36mTRANSACTION (17.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(4753324116888153030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/" for 127.0.0.1 at 2022-12-15 00:01:31 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1503)
+  Rendered layout layouts/application.html.erb (Duration: 202.4ms | Allocations: 35519)
+Completed 200 OK in 317ms (Views: 206.2ms | ActiveRecord: 7.8ms | Allocations: 46730)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-15 00:01:34 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 54.2ms | Allocations: 3022)
+  Rendered layout layouts/application.html.erb (Duration: 57.2ms | Allocations: 4221)
+Completed 200 OK in 145ms (Views: 62.0ms | ActiveRecord: 9.1ms | Allocations: 25589)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:01:40 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"jjcjc", "text"=>"dffff"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+No template found for PostsController#create, rendering head :no_content
+Completed 204 No Content in 112ms (ActiveRecord: 3.9ms | Allocations: 5666)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:01:44 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"jjcjc", "text"=>"dffff"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+No template found for PostsController#create, rendering head :no_content
+Completed 204 No Content in 7ms (ActiveRecord: 0.5ms | Allocations: 1887)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:01:45 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"jjcjc", "text"=>"dffff"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+No template found for PostsController#create, rendering head :no_content
+Completed 204 No Content in 5ms (ActiveRecord: 0.4ms | Allocations: 1728)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:01:45 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"jjcjc", "text"=>"dffff"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+No template found for PostsController#create, rendering head :no_content
+Completed 204 No Content in 6ms (ActiveRecord: 0.4ms | Allocations: 1694)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:01:45 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"jjcjc", "text"=>"dffff"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+No template found for PostsController#create, rendering head :no_content
+Completed 204 No Content in 5ms (ActiveRecord: 0.9ms | Allocations: 1692)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:01:45 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"jjcjc", "text"=>"dffff"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+No template found for PostsController#create, rendering head :no_content
+Completed 204 No Content in 22ms (ActiveRecord: 0.5ms | Allocations: 1697)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:01:46 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"jjcjc", "text"=>"dffff"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+No template found for PostsController#create, rendering head :no_content
+Completed 204 No Content in 9ms (ActiveRecord: 0.4ms | Allocations: 1703)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:01:46 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"jjcjc", "text"=>"dffff"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+No template found for PostsController#create, rendering head :no_content
+Completed 204 No Content in 5ms (ActiveRecord: 0.3ms | Allocations: 1700)
+
+
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-12-14 22:03:15.453972"], ["updated_at", "2022-12-14 22:03:15.453972"]]
+  [1m[36mTRANSACTION (46.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (3.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lilly"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Poland."], ["posts_counter", 0], ["created_at", "2022-12-14 22:03:31.257229"], ["updated_at", "2022-12-14 22:03:31.257229"]]
+  [1m[36mTRANSACTION (39.0ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2022-12-15 00:03:43 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 1.7ms | Allocations: 366)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 28.1ms | Allocations: 15261)
+  Rendered layout layouts/application.html.erb (Duration: 31.6ms | Allocations: 16697)
+Completed 200 OK in 34ms (Views: 29.6ms | ActiveRecord: 3.0ms | Allocations: 17068)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2022-12-15 00:03:48 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 112)
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 2], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:9
+  Rendered users/show.html.erb within layouts/application (Duration: 36.5ms | Allocations: 4629)
+  Rendered layout layouts/application.html.erb (Duration: 40.0ms | Allocations: 6117)
+Completed 200 OK in 57ms (Views: 40.0ms | ActiveRecord: 1.1ms | Allocations: 10897)
+
+
+Started GET "/users/2/posts" for 127.0.0.1 at 2022-12-15 00:03:52 +0200
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 90)
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 2], ["LIMIT", 3]]
+  ↳ app/views/posts/index.html.erb:5:in `each_with_index'
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1188)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 2519)
+Completed 200 OK in 12ms (Views: 8.1ms | ActiveRecord: 1.5ms | Allocations: 3451)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2022-12-15 00:03:57 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 67)
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 2], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:9
+  Rendered users/show.html.erb within layouts/application (Duration: 4.3ms | Allocations: 869)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 2211)
+Completed 200 OK in 12ms (Views: 7.9ms | ActiveRecord: 1.1ms | Allocations: 2981)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-15 00:04:10 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 873)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 1902)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 2225)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:04:14 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"jjcjc", "text"=>"cccc"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+  [1m[36mPost Create (78.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "jjcjc"], ["text", "cccc"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-14 22:04:14.628258"], ["updated_at", "2022-12-14 22:04:14.628258"], ["author_id", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+  [1m[36mPost Count (30.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 1], ["updated_at", "2022-12-14 22:04:14.745873"], ["id", 1]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mTRANSACTION (43.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+Redirected to http://127.0.0.1:3000/posts/new
+Completed 302 Found in 171ms (ActiveRecord: 153.1ms | Allocations: 6052)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-15 00:04:14 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 820)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 1848)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 2167)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2022-12-15 00:04:21 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 66)
+  [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:7
+  [1m[36mLike Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  Rendered posts/_post.html.erb (Duration: 116.1ms | Allocations: 11527)
+  Rendered users/show.html.erb within layouts/application (Duration: 122.0ms | Allocations: 12573)
+  Rendered layout layouts/application.html.erb (Duration: 125.7ms | Allocations: 14063)
+Completed 200 OK in 130ms (Views: 120.6ms | ActiveRecord: 6.5ms | Allocations: 14848)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2022-12-15 00:04:25 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 76)
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mComment Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:7
+  [1m[36mLike Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  Rendered posts/_post.html.erb (Duration: 5.3ms | Allocations: 1406)
+  Rendered users/show.html.erb within layouts/application (Duration: 10.1ms | Allocations: 2385)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 3710)
+Completed 200 OK in 17ms (Views: 12.6ms | ActiveRecord: 2.0ms | Allocations: 4538)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-15 00:04:30 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 867)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 1895)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 2218)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:04:33 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"ddf", "text"=>"ffff"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "ddf"], ["text", "ffff"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-14 22:04:33.905141"], ["updated_at", "2022-12-14 22:04:33.905141"], ["author_id", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 2], ["updated_at", "2022-12-14 22:04:33.915267"], ["id", 1]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mTRANSACTION (186.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+Redirected to http://127.0.0.1:3000/posts/new
+Completed 302 Found in 219ms (ActiveRecord: 192.6ms | Allocations: 4610)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-15 00:04:34 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 824)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 1852)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 2171)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:04:38 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"gtgtrg", "text"=>"fffgg"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+  [1m[36mPost Create (1.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "gtgtrg"], ["text", "fffgg"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-14 22:04:38.286407"], ["updated_at", "2022-12-14 22:04:38.286407"], ["author_id", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+  [1m[36mPost Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 3], ["updated_at", "2022-12-14 22:04:38.297699"], ["id", 1]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mTRANSACTION (117.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+Redirected to http://127.0.0.1:3000/posts/new
+Completed 302 Found in 141ms (ActiveRecord: 121.3ms | Allocations: 4460)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-15 00:04:38 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 826)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 1854)
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.0ms | Allocations: 2173)
+
+
+Started POST "/posts/new" for 127.0.0.1 at 2022-12-15 00:04:41 +0200
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"ttgdf", "text"=>"gggg"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+  [1m[36mPost Create (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "comments_counter", "likes_counter", "created_at", "updated_at", "author_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "ttgdf"], ["text", "gggg"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2022-12-14 22:04:41.979389"], ["updated_at", "2022-12-14 22:04:41.979389"], ["author_id", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+  [1m[36mPost Count (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["posts_counter", 4], ["updated_at", "2022-12-14 22:04:41.990466"], ["id", 1]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mTRANSACTION (97.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31:in `create'
+Redirected to http://127.0.0.1:3000/posts/new
+Completed 302 Found in 135ms (ActiveRecord: 102.3ms | Allocations: 4477)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2022-12-15 00:04:42 +0200
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 828)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 1856)
+Completed 200 OK in 14ms (Views: 13.4ms | ActiveRecord: 0.0ms | Allocations: 2175)
+
+
+Started GET "/" for 127.0.0.1 at 2022-12-15 00:04:49 +0200
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered users/_user.html.erb (Duration: 0.4ms | Allocations: 66)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 51)
+  Rendered users/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 810)
+  Rendered layout layouts/application.html.erb (Duration: 23.5ms | Allocations: 2154)
+Completed 200 OK in 26ms (Views: 21.9ms | ActiveRecord: 2.7ms | Allocations: 2488)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2022-12-15 00:04:50 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.5ms | Allocations: 66)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mComment Count (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:7
+  [1m[36mLike Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  Rendered posts/_post.html.erb (Duration: 8.5ms | Allocations: 1405)
+  [1m[36mComment Count (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  ↳ app/views/posts/_post.html.erb:7
+  [1m[36mLike Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 2]]
+  ↳ app/views/posts/_post.html.erb:8
+  Rendered posts/_post.html.erb (Duration: 8.3ms | Allocations: 1408)
+  [1m[36mComment Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/_post.html.erb:7
+  [1m[36mLike Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/_post.html.erb:8
+  Rendered posts/_post.html.erb (Duration: 6.9ms | Allocations: 1407)
+  Rendered users/show.html.erb within layouts/application (Duration: 29.4ms | Allocations: 5289)
+  Rendered layout layouts/application.html.erb (Duration: 33.9ms | Allocations: 6616)
+Completed 200 OK in 42ms (Views: 29.5ms | ActiveRecord: 7.7ms | Allocations: 7385)
+
+
+Started GET "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:04:52 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (Duration: 63.1ms | Allocations: 7178)
+  Rendered layout layouts/application.html.erb (Duration: 66.2ms | Allocations: 8314)
+Completed 200 OK in 107ms (Views: 65.6ms | ActiveRecord: 9.6ms | Allocations: 24555)
+
+
+Started POST "/users/1/posts/1/likes" for 127.0.0.1 at 2022-12-15 00:04:54 +0200
+Processing by PostsController#create_like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like post", "user_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22:in `create_like'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+  [1m[36mLike Create (1.3ms)[0m  [1m[32mINSERT INTO "likes" ("created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-12-14 22:04:54.610046"], ["updated_at", "2022-12-14 22:04:54.610046"], ["author_id", 1], ["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mPost Update (0.6ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["likes_counter", 1], ["updated_at", "2022-12-14 22:04:54.630008"], ["id", 1]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mPost Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mTRANSACTION (42.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+Redirected to http://127.0.0.1:3000/users/1/posts/1
+Completed 302 Found in 87ms (ActiveRecord: 47.6ms | Allocations: 8942)
+
+
+Started GET "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:04:54 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (3.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (Duration: 15.0ms | Allocations: 2885)
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | Allocations: 3907)
+Completed 200 OK in 25ms (Views: 14.8ms | ActiveRecord: 5.2ms | Allocations: 5191)
+
+
+Started POST "/users/1/posts/1/likes" for 127.0.0.1 at 2022-12-15 00:04:55 +0200
+Processing by PostsController#create_like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like post", "user_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22:in `create_like'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+  [1m[36mLike Create (0.9ms)[0m  [1m[32mINSERT INTO "likes" ("created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-12-14 22:04:55.983827"], ["updated_at", "2022-12-14 22:04:55.983827"], ["author_id", 1], ["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mPost Update (0.6ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["likes_counter", 2], ["updated_at", "2022-12-14 22:04:55.997034"], ["id", 1]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mPost Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+Redirected to http://127.0.0.1:3000/users/1/posts/1
+Completed 302 Found in 41ms (ActiveRecord: 14.6ms | Allocations: 6487)
+
+
+Started GET "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:04:56 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (Duration: 13.5ms | Allocations: 2882)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 3902)
+Completed 200 OK in 27ms (Views: 14.8ms | ActiveRecord: 6.7ms | Allocations: 5151)
+
+
+Started POST "/users/1/posts/1/likes" for 127.0.0.1 at 2022-12-15 00:04:56 +0200
+Processing by PostsController#create_like as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like post", "user_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:22:in `create_like'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+  [1m[36mLike Create (1.1ms)[0m  [1m[32mINSERT INTO "likes" ("created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-12-14 22:04:56.192302"], ["updated_at", "2022-12-14 22:04:56.192302"], ["author_id", 1], ["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mPost Update (0.7ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["likes_counter", 3], ["updated_at", "2022-12-14 22:04:56.208198"], ["id", 1]]
+  ↳ app/models/like.rb:8:in `update_likes_counter'
+  [1m[36mPost Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:13:in `update_posts_counter'
+  [1m[36mTRANSACTION (74.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:23:in `create_like'
+Redirected to http://127.0.0.1:3000/users/1/posts/1
+Completed 302 Found in 108ms (ActiveRecord: 80.6ms | Allocations: 6494)
+
+
+Started GET "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:04:56 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (Duration: 11.3ms | Allocations: 2856)
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 3876)
+Completed 200 OK in 23ms (Views: 14.7ms | ActiveRecord: 3.0ms | Allocations: 5125)
+
+
+Started POST "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:04:58 +0200
+Processing by PostsController#create_comment as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"ffff"}, "commit"=>"Comment", "user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:16:in `create_comment'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mComment Create (1.2ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "ffff"], ["created_at", "2022-12-14 22:04:58.348232"], ["updated_at", "2022-12-14 22:04:58.348232"], ["author_id", 1], ["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mPost Update All (0.8ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 1]]
+  ↳ app/models/comment.rb:8:in `update_comments_counter'
+  [1m[36mTRANSACTION (45.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+Redirected to http://127.0.0.1:3000/users/1/posts/1
+Completed 302 Found in 67ms (ActiveRecord: 48.7ms | Allocations: 5220)
+
+
+Started GET "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:04:58 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (Duration: 48.9ms | Allocations: 5455)
+  Rendered layout layouts/application.html.erb (Duration: 53.8ms | Allocations: 6576)
+Completed 200 OK in 61ms (Views: 52.3ms | ActiveRecord: 3.4ms | Allocations: 7844)
+
+
+Started POST "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:04:59 +0200
+Processing by PostsController#create_comment as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>""}, "commit"=>"Comment", "user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:16:in `create_comment'
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mComment Create (0.9ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", ""], ["created_at", "2022-12-14 22:04:59.182248"], ["updated_at", "2022-12-14 22:04:59.182248"], ["author_id", 1], ["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mPost Update All (2.1ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 1]]
+  ↳ app/models/comment.rb:8:in `update_comments_counter'
+  [1m[36mTRANSACTION (131.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+Redirected to http://127.0.0.1:3000/users/1/posts/1
+Completed 302 Found in 154ms (ActiveRecord: 139.4ms | Allocations: 4007)
+
+
+Started GET "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:04:59 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (2.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (Duration: 18.7ms | Allocations: 3728)
+  Rendered layout layouts/application.html.erb (Duration: 21.7ms | Allocations: 4749)
+Completed 200 OK in 30ms (Views: 17.8ms | ActiveRecord: 6.8ms | Allocations: 6032)
+
+
+Started POST "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:05:01 +0200
+Processing by PostsController#create_comment as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"ffff"}, "commit"=>"Comment", "user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (3.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:16:in `create_comment'
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mComment Create (2.6ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "ffff"], ["created_at", "2022-12-14 22:05:01.985289"], ["updated_at", "2022-12-14 22:05:01.985289"], ["author_id", 1], ["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mPost Update All (0.6ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 1]]
+  ↳ app/models/comment.rb:8:in `update_comments_counter'
+  [1m[36mTRANSACTION (16.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+Redirected to http://127.0.0.1:3000/users/1/posts/1
+Completed 302 Found in 50ms (ActiveRecord: 28.4ms | Allocations: 3799)
+
+
+Started GET "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:05:02 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (Duration: 20.4ms | Allocations: 3725)
+  Rendered layout layouts/application.html.erb (Duration: 23.6ms | Allocations: 4750)
+Completed 200 OK in 35ms (Views: 18.1ms | ActiveRecord: 10.6ms | Allocations: 6000)
+
+
+Started POST "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:05:03 +0200
+Processing by PostsController#create_comment as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"wweweg"}, "commit"=>"Comment", "user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:16:in `create_comment'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mComment Create (2.0ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "wweweg"], ["created_at", "2022-12-14 22:05:04.003852"], ["updated_at", "2022-12-14 22:05:04.003852"], ["author_id", 1], ["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mPost Update All (0.8ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 1]]
+  ↳ app/models/comment.rb:8:in `update_comments_counter'
+  [1m[36mTRANSACTION (45.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+Redirected to http://127.0.0.1:3000/users/1/posts/1
+Completed 302 Found in 62ms (ActiveRecord: 48.9ms | Allocations: 3840)
+
+
+Started GET "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:05:04 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (Duration: 27.5ms | Allocations: 3737)
+  Rendered layout layouts/application.html.erb (Duration: 30.8ms | Allocations: 4757)
+Completed 200 OK in 38ms (Views: 22.5ms | ActiveRecord: 10.5ms | Allocations: 6006)
+
+
+Started POST "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:05:06 +0200
+Processing by PostsController#create_comment as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"gwwefwe"}, "commit"=>"Comment", "user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:16:in `create_comment'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mComment Create (1.1ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "gwwefwe"], ["created_at", "2022-12-14 22:05:06.683404"], ["updated_at", "2022-12-14 22:05:06.683404"], ["author_id", 1], ["post_id", 1]]
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+  [1m[36mPost Update All (0.8ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 1]]
+  ↳ app/models/comment.rb:8:in `update_comments_counter'
+  [1m[36mTRANSACTION (31.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:18:in `create_comment'
+Redirected to http://127.0.0.1:3000/users/1/posts/1
+Completed 302 Found in 56ms (ActiveRecord: 34.7ms | Allocations: 3851)
+
+
+Started GET "/users/1/posts/1" for 127.0.0.1 at 2022-12-15 00:05:06 +0200
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mLike Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:7
+  [1m[36mComment Load (2.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/posts/show.html.erb:14
+  Rendered posts/show.html.erb within layouts/application (Duration: 21.5ms | Allocations: 3770)
+  Rendered layout layouts/application.html.erb (Duration: 25.0ms | Allocations: 4795)
+Completed 200 OK in 36ms (Views: 22.0ms | ActiveRecord: 6.3ms | Allocations: 6045)
+
+
