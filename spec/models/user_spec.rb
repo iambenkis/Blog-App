@@ -36,14 +36,13 @@ RSpec.describe User, type: :model do
       puts "Counter #{posts_count}"
       expect(posts_count).to be(0)
     end
-    it 'User should have three rexent post post' do
+    it 'User should have three recent post post' do
       Post.create(author: subject, title: 'Hello', text: 'This is my first post')
       Post.create(author: subject, title: 'Hello-second', text: 'This is my second post')
       Post.create(author: subject, title: 'Hello-third', text: 'This is my third post')
       Post.create(author: subject, title: 'Hello-fourth', text: 'This is my fourth post')
 
       posts_count = subject.recent_posts.count
-      puts "Posts #{subject.recent_posts}"
       expect(posts_count).to be(3)
     end
   end
