@@ -33284,3 +33284,59 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 29ms (Views: 9.4ms | ActiveRecord: 0.0ms | Allocations: 3063)
 
 
+Started GET "/users/confirmation/new" for 127.0.0.1 at 2022-12-15 16:39:54 +0200
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/confirmations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 216)
+  Rendered devise/confirmations/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1700)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 2897)
+Completed 200 OK in 9ms (Views: 8.1ms | Allocations: 4129)
+
+
+Started POST "/users/confirmation" for 127.0.0.1 at 2022-12-15 16:39:58 +0200
+Processing by Devise::ConfirmationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"benkisenge03@gmail.com"}, "commit"=>"Resend confirmation instructions"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."unconfirmed_email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["unconfirmed_email", "benkisenge03@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "benkisenge03@gmail.com"], ["LIMIT", 1]]
+  Rendering devise/mailer/confirmation_instructions.html.erb
+  Rendered devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 93)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 2.0ms
+Delivered mail 639b31bede823_a0713ae872342@benkis-HP-EliteBook-8440p.mail (2.1ms)
+Date: Thu, 15 Dec 2022 16:39:58 +0200
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: benkisenge03@gmail.com
+Message-ID: <639b31bede823_a0713ae872342@benkis-HP-EliteBook-8440p.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome benkisenge03@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=4m4dryr6nvGcXVnjtvBg">Confirm my account</a></p>
+
+Redirected to http://127.0.0.1:3000/users/sign_in
+Completed 302 Found in 50ms (ActiveRecord: 7.6ms | Allocations: 10664)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2022-12-15 16:39:58 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 195)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1326)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 2363)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 3076)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4753324116888153030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4753324116888153030)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
