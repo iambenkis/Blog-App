@@ -184,3 +184,34 @@ body {
   margin-bottom: 4rem;
   border-radius: 7px;
 }
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login h2 {
+  color: rgb(255, 255, 255);
+}
+
+.login input {
+  height: 2rem;
+  padding: 1rem;
+  border: 1px solid #000;
+}
+
+.login .action {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+}
+
+.sign-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 70%;
+  left: 43%;
+}
