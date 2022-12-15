@@ -184,7 +184,8 @@ body {
   margin-bottom: 4rem;
   border-radius: 7px;
 }
-.login{
+
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
