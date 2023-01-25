@@ -104,7 +104,7 @@ In order to run this project you need:
 
 ### Install
 
-Install this project with:
+Install this project with :
 
 ```sh
   bundle install
